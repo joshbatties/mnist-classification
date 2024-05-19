@@ -35,7 +35,7 @@ To set up the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/joshbatties/classification.git
+   git clone https://github.com/joshbatties/mnist-classification.git
    cd classification
 
 2. Create a virtual environment and activate it:
