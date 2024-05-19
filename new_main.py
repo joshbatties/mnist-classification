@@ -1,10 +1,34 @@
 import numpy as np
-from sklearn.datasets import fetch_openml, load_digits
+from sklearn.datasets import fetch_openml
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_predict, cross_val_score
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, precision_recall_curve, roc_auc_score
+
+# Define plot_digit function
+def plot_digit(data):
+    """Function to plot a single digit"""
+    image = data.reshape(28, 28)
+    plt.imshow(image, cmap=mpl.cm.binary, interpolation="nearest")
+    plt.axis("off")
+
+# Define plot_digits function
+def plot_digits(instances, images_per_row=10, **options):
+    """Function to plot multiple digits"""
+    size = 28
+    images_per_row = min(len(instances), images_per_row)
+    images = [instance.reshape(size, size) for instance in instances]
+    n_rows = (len(instances) - 1) // images_per_row + 1
+    row_images = []
+    n_empty = n_rows * images_per_row - len(instances)
+    images.append(np.zeros((size, size * n_empty)))
+    for row in range(n_rows):
+        rimages = images[row * images_per_row: (row + 1) * images_per_row]
+        row_images.append(np.concatenate(rimages, axis=1))
+    image = np.concatenate(row_images, axis=0)
+    plt.imshow(image, cmap=mpl.cm.binary, **options)
+    plt.axis("off")
 
 # Fetch the MNIST dataset from OpenML
 mnist = fetch_openml('mnist_784', version=1, as_frame=False)
@@ -250,10 +274,10 @@ X_ba = X_train[(y_train == cl_b) & (y_train_pred == cl_a)]
 X_bb = X_train[(y_train == cl_b) & (y_train_pred == cl_b)]
 
 plt.figure(figsize=(8,8))
-plt.subplot(221); plot_digits(X_aa[:25], images_per_row=5)  # plot_digits not defined in provided code
-plt.subplot(222); plot_digits(X_ab[:25], images_per_row=5)  # plot_digits not defined in provided code
-plt.subplot(223); plot_digits(X_ba[:25], images_per_row=5)  # plot_digits not defined in provided code
-plt.subplot(224); plot_digits(X_bb[:25], images_per_row=5)  # plot_digits not defined in provided code
+plt.subplot(221); plot_digits(X_aa[:25], images_per_row=5)
+plt.subplot(222); plot_digits(X_ab[:25], images_per_row=5)
+plt.subplot(223); plot_digits(X_ba[:25], images_per_row=5)
+plt.subplot(224); plot_digits(X_bb[:25], images_per_row=5)
 plt.show()
 
 # Multi-label classification using K-Nearest Neighbors (KNN)
@@ -283,11 +307,11 @@ y_test_mod = X_test
 
 # Display an example of noisy data and its target
 some_index = 0
-plt.subplot(121); plot_digit(X_test_mod[some_index])  # plot_digit not defined in provided code
-plt.subplot(122); plot_digit(y_test_mod[some_index])  # plot_digit not defined in provided code
+plt.subplot(121); plot_digit(X_test_mod[some_index])
+plt.subplot(122); plot_digit(y_test_mod[some_index])
 plt.show()
 
 # Train the KNN classifier on the noisy data and predict a clean image
 knn_clf.fit(X_train_mod, y_train_mod)
 clean_digit = knn_clf.predict([X_test_mod[some_index]])
-plot_digit(clean_digit)  # plot_digit not defined in provided code
+plot_digit(clean_digit)
