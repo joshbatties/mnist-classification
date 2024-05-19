@@ -48,6 +48,9 @@ To set up the project, follow these steps:
    ```bash
     pip install -r requirements.txt
 
+## Usage
+    ```bash
+    py main.py 
 ### Detailed Description of Each Module
 
 #### Data Loading (`data/load_data.py`)
