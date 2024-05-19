@@ -36,5 +36,5 @@ To set up the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/jbatties/classification.git
+   git clone https://github.com/joshbatties/classification.git
    cd classification
