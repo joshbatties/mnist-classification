@@ -49,8 +49,13 @@ To set up the project, follow these steps:
     pip install -r requirements.txt
 
 ## Usage
-    ```bash
-    py main.py 
+
+To run the main script and execute the entire pipeline, use the following command:
+
+```bash
+python main.py
+```
+
 ### Detailed Description of Each Module
 
 #### Data Loading (`data/load_data.py`)
