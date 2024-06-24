@@ -7,7 +7,6 @@ The MNIST Classification Project aims to provide a comprehensive example of how 
 
 The models used include:
 - Stochastic Gradient Descent (SGD) Classifier
-- Dummy Classifier
 - Random Forest Classifier
 - Support Vector Machine (SVM) Classifier
 - K-Nearest Neighbors (KNN) Classifier
