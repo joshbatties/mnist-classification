@@ -12,8 +12,6 @@ The models used include:
 - K-Nearest Neighbors (KNN) Classifier
 
 ### Description of Files and Directories
-
-- **README.md**: Provides an overview and usage instructions for the project.
 - **requirements.txt**: Lists all the dependencies required for the project.
 - **main.py**: The main script to run the entire pipeline, integrating all functionalities.
 - **data/**:
